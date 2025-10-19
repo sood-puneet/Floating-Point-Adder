@@ -11,7 +11,7 @@ Designed, simulated, and verified using **AMD Vivado**, this project can be synt
 ## ⚙️ Features
 - Fully IEEE-754 compliant single-precision (32-bit) arithmetic  
 - Handles **positive and negative operands**  
-- Includes **normalization** and **rounding** stages  
+- Includes **normalization**  stage  
 - Modular and hierarchical design for readability  
 - **Testbench** included for simulation and verification  
 - **Waveform results** included for visual confirmation  
