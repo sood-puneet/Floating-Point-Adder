@@ -34,6 +34,6 @@ Run the simulation in **Vivado** or **ModelSim** to verify the results.
 You can view the waveform in the **img/** folder.
 
 ### Simulation Results
-![Waveform](Img/waveform.png
+![Waveform](Img/waveform.png)
 ![Alignment Stage](Img/schemetics.png)
 
