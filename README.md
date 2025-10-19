@@ -4,7 +4,7 @@
 This project implements a **32-bit IEEE-754 Floating Point Adder** in **Verilog HDL**.  
 It performs addition and subtraction of floating-point numbers, covering all the key operations like exponent alignment, mantissa addition/subtraction, normalization, and packing.
 
-Designed, simulated, and verified using **Xilinx Vivado**, this project can be synthesized for FPGA boards such as **Basys 3**, **Nexys A7**, or any other **Artix-7**-based device.
+Designed, simulated, and verified using **AMD Vivado**, this project can be synthesized for FPGA boards such as **Basys 3**, **Nexys A7**, or any other **Artix-7**-based device.
 
 ---
 
