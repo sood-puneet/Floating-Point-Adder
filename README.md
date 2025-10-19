@@ -1,6 +1,6 @@
-# 🧮 Floating Point Adder (IEEE-754, Single Precision)
+# Floating Point Adder (IEEE-754, Single Precision)
 
-## 📘 Overview
+## Overview
 This project implements a **32-bit IEEE-754 Floating Point Adder** in **Verilog HDL**.  
 It performs addition and subtraction of floating-point numbers, covering all the key operations like exponent alignment, mantissa addition/subtraction, normalization, and packing.
 
@@ -8,7 +8,7 @@ Designed, simulated, and verified using **AMD Vivado**, this project can be synt
 
 ---
 
-## ⚙️ Features
+## Features
 - Fully IEEE-754 compliant single-precision (32-bit) arithmetic  
 - Handles **positive and negative operands**  
 - Includes **normalization**  stage  
@@ -20,7 +20,7 @@ Designed, simulated, and verified using **AMD Vivado**, this project can be synt
 
 ---
 
-## 🧠 Working Principle
+## Working Principle
 1. **Unpacking:** Extracts sign, exponent, and mantissa from each input operand.  
 2. **Alignment:** The mantissa of the smaller exponent is right-shifted until exponents match.  
 3. **Addition/Subtraction:** Mantissas are added or subtracted based on operand signs.  
@@ -29,11 +29,11 @@ Designed, simulated, and verified using **AMD Vivado**, this project can be synt
 
 ---
 
-## 🧪 Simulation
+## Simulation
 Run the simulation in **Vivado** or **ModelSim** to verify the results.  
-You can view the waveform in the **Waveforms/** folder.
+You can view the waveform in the **img/** folder.
 
-### 🔍 Simulation Results
-![Waveform](Img/waveform.png)
+### Simulation Results
+![Waveform](Img/waveform.png
 ![Alignment Stage](Img/schemetics.png)
 
