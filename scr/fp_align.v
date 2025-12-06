@@ -7,10 +7,10 @@ module fp_align (
     output [23:0] mant_a_shift, // shifted mantissa A
     output [23:0] mant_b_shift  // shifted mantissa B
 );
+    wire a_larger = (exp_a >= exp_b);
     wire [7:0] exp_diff;
-    assign exp_diff = (exp_a >= exp_b) ? (exp_a - exp_b) : (exp_b - exp_a);
-
-    assign mant_a_shift = (exp_a >= exp_b) ? mant_a : (mant_a >> exp_diff);
-    assign mant_b_shift = (exp_b >  exp_a) ?  mant_b: (mant_b >> exp_diff);
-    assign exp_large    = (exp_a >= exp_b) ? exp_a : exp_b;
+    assign exp_diff = (a_larger) ? (exp_a - exp_b) : (exp_b - exp_a);
+    assign mant_a_shift = (a_larger) ? mant_a : (mant_a >> exp_diff);
+    assign mant_b_shift = (a_larger) ?  (mant_b >> exp_diff) :  mant_b;
+    assign exp_large    = (a_larger) ? exp_a : exp_b;
 endmodule
