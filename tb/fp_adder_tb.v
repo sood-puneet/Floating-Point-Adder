@@ -1,39 +1,41 @@
 `timescale 1ns/1ns
-
 module tb_fp_adder;
-
-    reg  [31:0] a, b;
+    reg clk = 1'b0;
+    reg [31:0] a, b;
     wire [31:0] result;
+
     fp_adder uut (
+        .clk(clk),
         .a(a),
         .b(b),
         .result(result)
     );
 
+    // 100MHz Clock (10ns period)
+    always #5 clk = ~clk;
 
     initial begin
-        $dumpfile("fp_adder_tb.vcd");   //for waveform dump
-        $dumpvars(0, tb_fp_adder);
-        $monitor("time=%0t | a=%h | b=%h | result=%h", 
-                      $time, a, b, result);
-        a = 32'h44000000;  //512
-        b = 32'h41b40000;   // 22.5
- 
-        #10;
-        a = 32'h00000000; //0
-        b = 32'h00000000; //0
-        #10;
+        // Reset inputs
+        a = 0; b = 0;
+        
+        // Wait
+        @(posedge clk);
+        #1; 
+        //  1: 512 + 22.5
+        a = 32'h44000000; b = 32'h41b40000; 
+        @(posedge clk); #1;
 
-         a = 32'h43695553;  //233.3333
-         b = 32'h43543eb8;  //212.245  
-        #10;
-         a = 32'h43e4370a;  //456.43
-         b = 32'hc44b1ccd;  //- 812.45
-        #10;
+        // 2: 233.3 + 212.2
+        a = 32'h43695553; b = 32'h43543eb8; 
+        @(posedge clk); #1;
 
-         a = 32'h44fe43d7;  //2034.12
-         b = 32'hc4fa0000;  //-2000
-        #10 $finish;
+        // 3: 456.4 + (-812.4)
+        a = 32'h43e4370a; b = 32'hc44b1ccd; 
+        @(posedge clk); #1;
+
+        // Stop new inputs
+        a = 0; b = 0;
+
+        #50 $finish;
     end
-
 endmodule
