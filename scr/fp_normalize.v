@@ -16,9 +16,15 @@ module fp_normalize (
 
         // Case 1: Overflow (carry out)
         if (mant_sum[24]) begin
-            // shift right by 1
-            mant_norm = mant_sum[24:1];
-            exp_out   = exp_in + 1;
+           if (exp_in >= 8'd254) begin 
+        //  254 + 1 = 255 (Infinity)
+        exp_out   = 8'hFF;
+        else begin
+        // Normal carry handling
+        mant_norm = mant_sum[24:1];
+        exp_out   = exp_in + 1'b1;
+    end
+    end
         end 
         else begin
             // Case 2: No overflow, may need to normalize left
@@ -34,7 +40,6 @@ module fp_normalize (
                 exp_out = exp_in - lz_count;
             else
                 exp_out = 0;
-
             // Shift mantissa left by leading zero count
             mant_norm = mant_sum[23:0] << lz_count;
         end
